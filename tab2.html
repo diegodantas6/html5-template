@@ -226,34 +226,161 @@
           
           
     <div class="content-wrapper">
-        
-        <div class="content">
+
+        <section class="content-header">
+            <h1>
+                Cadastro<small>Cliente</small>
+            </h1>
+            
+        </section>
+
+        <section class="content">
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs nav-justified">
-                    <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-                    <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
-                    <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+                    <li class="active"><a data-toggle="tab" href="#novo">Novo</a></li>
+                    <li><a data-toggle="tab" href="#endereco">Endereço</a></li>
+                    <li><a data-toggle="tab" href="#contato">Contato</a></li>
                 </ul>
 
                 <div class="tab-content">
-                    <div id="home" class="tab-pane fade in active">
-                        <h3>HOME</h3>
-                        <p>Some content.</p>
+                    <div id="novo" class="tab-pane fade in active">
+                        
+                        <div class="box-body">
+                            
+                            <div class="col-sm-12 form-group">
+                                <label>Nome</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-laptop"></i>
+                                    </div>
+                                    <input class="form-control" type="text">
+                                </div>
+                            </div>
+                            
+                            <div class="col-sm-6 form-group">
+                                <label>CPF</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-laptop"></i>
+                                    </div>
+                                    <input class="form-control" type="text">
+                                </div>
+                            </div>
+                            
+                            <div class="col-sm-6 form-group">
+                                <label>Idade</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-laptop"></i>
+                                    </div>
+                                    <input class="form-control" type="text">
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        <div class="box-footer">
+                            <input type="button" class="btn btn-danger" value="Cancelar">
+                            <input type="button" class="btn btn-primary pull-right" value="Salvar">
+                        </div>
+
                     </div>
 
-                    <div id="menu1" class="tab-pane fade">
-                        <h3>Menu 1</h3>
-                        <p>Some content in menu 1.</p>
+                    <div id="contato" class="tab-pane fade">
+                        asdasd
+
                     </div>
 
-                    <div id="menu2" class="tab-pane fade">
-                        <h3>Menu 2</h3>
-                        <p>Some content in menu 2.</p>
+                    <div id="endereco" class="tab-pane fade">
+                        
+                        <div class="box-body">
+                            
+                            <div class="col-sm-4 form-group">
+                                <label>cep</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-laptop"></i>
+                                    </div>
+                                    <input id="cep" class="form-control" type="text">
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="col-sm-4 form-group">
+                                <label>numero</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-laptop"></i>
+                                    </div>
+                                    <input id="numero" class="form-control" type="text">
+                                </div>
+                            </div>
+                            
+
+                            <div class="col-sm-4 form-group">
+                                <label>estado</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-laptop"></i>
+                                    </div>
+                                    <input id="estado" class="form-control" type="text">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 form-group">
+                                <label>cidade</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-laptop"></i>
+                                    </div>
+                                    <input id="cidade" class="form-control" type="text">
+                                </div>
+                            </div>
+                            
+                            <div class="col-sm-6 form-group">
+                                <label>bairro</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-laptop"></i>
+                                    </div>
+                                    <input id="bairro" class="form-control" type="text">
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="col-sm-12 form-group">
+                                <label>logradouro</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-laptop"></i>
+                                    </div>
+                                    <input id="logradouro" class="form-control" type="text">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 form-group">
+                                <label>complemento</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-laptop"></i>
+                                    </div>
+                                    <input class="form-control" type="text">
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+
+                        <div class="box-footer">
+                            <input type="button" class="btn btn-danger" value="Cancelar">
+                            <input type="button" class="btn btn-primary pull-right" value="Salvar">
+                        </div>                        
+
                     </div>
                 </div>
             </div>
-        </div>
-
+        </section>        
+        
     </div>
 
       <!-- Main Footer -->
@@ -268,5 +395,53 @@
         
       </div>
 
+      
+    <!-- page script -->
+    <script>
+      $(function () {
+        $("#example1").DataTable();
+          
+          
+        $("#cep").focusout(function () {
+            var cepVal = $("#cep").val();
+            
+            buscaCep(cepVal);
+        });
+          
+      });
+        
+        
+      function buscaCep(cepVal) {
+          
+        $.ajax({
+            method : "GET",
+            url : "http://api.postmon.com.br/v1/cep/" + cepVal,
+            data : {},
+            success : function(data) {
+                campos(data);
+            },
+            error : function(data) {
+                alert('erro: ' + data);
+            }
+        });
+          
+      }
+        
+        function campos(data) {
+            
+            $("#bairro").val(data.bairro);
+            
+            $("#cidade").val(data.cidade);
+            
+            $("#estado").val(data.estado);
+            
+            $("#logradouro").val(data.logradouro);
+            
+        }
+        
+        
+    </script>
+      
+      
     </body>
 </html>
