@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Parsley VALIDATION</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="plugins/parsley/parsley.css">
+    
+    <!-- JS -->
+    <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="plugins/parsley/parsley.min.js"></script>
+    <script src="plugins/parsley/i18n/pt-br.js"></script>
+    
+</head>
+<body>
+    
+    <form class="container" id="formDados" action="javascript: teste();" autocomplete="off" data-parsley-focus="first">
+        
+        <p>
+            <label>Nome</label>
+            <input type="text" id="txtNome" required data-parsley-required-message="Por favor digite o nome" data-parsley-trigger="focusout" data-parsley-teste="">
+        </p>
+        
+        <p>
+            <label>Numero</label>
+            <input type="number" id="txtNumero" min="10" required required data-parsley-trigger="focusout">
+        </p>
+        
+        <p>
+            <label>Email</label>
+            <input type="email" id="txtEmail" required required data-parsley-trigger="focusout" >
+        </p>
+        
+        <input type="submit" value="SUBMIT">
+        
+        <input type="reset" value="RESET">
+    
+    </form>
+    
+    <script>
+    
+        $(document).ready(function() {
+            $('#formDados').parsley();
+        });
+
+        function teste() {
+            
+            alert('FOI');
+        }
+        
+        window.Parsley.addValidator('teste', {
+            validateString : function(value) {
+                return value === 'teste';
+            }
+        });        
+        
+    </script>
+    
+</body>
+</html>
