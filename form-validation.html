@@ -4,8 +4,8 @@
     <title>Parsley VALIDATION</title>
     
     <!-- CSS -->
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="plugins/parsley/parsley.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     
     <!-- JS -->
     <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
@@ -15,41 +15,134 @@
 </head>
 <body>
     
-    <form class="container" id="formDados" action="javascript: teste();" autocomplete="off" data-parsley-focus="first">
+    <div class="panel panel-primary">
         
-        <p>
-            <label>Nome</label>
-            <input type="text" id="txtNome" required data-parsley-required-message="Por favor digite o nome" data-parsley-trigger="focusout" data-parsley-teste="">
-        </p>
-        
-        <p>
-            <label>Numero</label>
-            <input type="number" id="txtNumero" min="10" required required data-parsley-trigger="focusout">
-        </p>
-        
-        <p>
-            <label>Email</label>
-            <input type="email" id="txtEmail" required required data-parsley-trigger="focusout" >
-        </p>
-        
-        <input type="submit" value="SUBMIT">
-        
-        <input type="reset" value="RESET">
+        <div class="panel-heading">
+            Teste PARSLEY
+        </div>
+
+        <form id="formDados" action="javascript: teste();" autocomplete="off">
+
+            <div class="panel panel-body">
+
+                <div class="row">
+                
+                    <div class="form-group col-sm-6">
+                        <label>Nome</label>
+                        <!--<input type="text" id="nome" class="form-control" required data-parsley-required-message="Por favor digite o nome" data-parsley-trigger="focusout" data-parsley-teste2="">-->
+                        <input type="text" id="nome" class="form-control" required data-parsley-required-message="Por favor digite o nome" data-parsley-trigger="focusout" data-parsley-remote data-parsley-remote-validator="teste">
+                    </div>
+
+                    <div class="form-group col-sm-6">
+                        <label>Login</label>
+                        <input type="text" class="form-control" required data-parsley-trigger="focusout" minlength="10" maxlength="20">
+                    </div>
+                    
+                </div>
+                
+                <div class="row">
+
+                    <div class="form-group col-sm-6">
+                        <label>Idade</label>
+                        <input type="number" class="form-control" min="10" required data-parsley-trigger="focusout">
+                    </div>
+
+                    <div class="form-group col-sm-6">
+                        <label>Tipo</label>
+                        <select class="form-control" required placeholder="Selecione um tipo" data-parsley-trigger="focusout">
+                            <option value="" selected>Select your option</option>
+                            <option>Alaska</option>
+                            <option>California</option>
+                            <option>Delaware</option>
+                            <option>Tennessee</option>
+                            <option>Texas</option>
+                            <option>Washington</option>
+                        </select>
+                    </div>
+                    
+                </div>
+
+                <div class="row">
+                
+                    <div class="form-group col-sm-6">
+                        <label>Tipo</label>
+                        <select class="form-control" required placeholder="Selecione um tipo" data-parsley-errors-container="#errorTipo2" data-parsley-trigger="focusout">
+                            <option value="" selected>Select your option</option>
+                            <option>Alaska</option>
+                            <option>California</option>
+                            <option>Delaware</option>
+                            <option>Tennessee</option>
+                            <option>Texas</option>
+                            <option>Washington</option>
+                        </select>
+
+                        <span id="errorTipo2"></span>
+                    </div>
+
+
+                    <div class="form-group col-sm-6">
+                        <label>Email</label>
+                        <input type="email" class="form-control" required data-parsley-trigger="focusout">
+                    </div>                
+
+                </div>
+                    
+                <div class="row">
+                
+                    <div class="form-group col-sm-12">
+                        <label>Obs</label>
+                        <textarea rows="3" class="form-control"></textarea>
+                    </div>
+                    
+                </div>
+                    
+            </div>
+
+            <div class="panel-footer">
+                <button type="reset" class="btn btn-danger">Cancelar</button>
+                <button type="submit" class="btn btn-primary pull-right">Salvar</button>
+            </div>
+
+        </form>
+
+    </div>
     
-    </form>
+    <style>
+    
+        textarea {
+            resize: none;
+        }
+        
+    </style>
     
     <script>
     
         $(document).ready(function() {
+
+            $('#nome').focus();
+            
             $('#formDados').parsley();
+            
         });
 
         function teste() {
-            
             alert('FOI');
         }
         
-        window.Parsley.addValidator('teste', {
+        
+        window.Parsley.addAsyncValidator('teste', function() {
+
+            var valor = this.$element.val();
+            
+            var millisecondsToWait = 2000;
+
+            setTimeout(function() {
+                return valor === 'teste';
+            }, millisecondsToWait);
+            
+        });
+
+        window.Parsley.addValidator('teste2', {
             validateString : function(value) {
                 return value === 'teste';
             }
