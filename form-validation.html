@@ -6,11 +6,15 @@
     <!-- CSS -->
     <link rel="stylesheet" href="plugins/parsley/parsley.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="plugins/pNotify/pnotify.custom.min.css">
     
     <!-- JS -->
     <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="plugins/parsley/parsley.min.js"></script>
     <script src="plugins/parsley/i18n/pt-br.js"></script>
+    <script src="plugins/pNotify/pnotify.custom.min.js"></script>
+    <script src="plugins/confirm/jquery.confirm.min.js"></script>
     
 </head>
 <body>
@@ -29,8 +33,8 @@
                 
                     <div class="form-group col-sm-6">
                         <label>Nome</label>
-                        <!--<input type="text" id="nome" class="form-control" required data-parsley-required-message="Por favor digite o nome" data-parsley-trigger="focusout" data-parsley-teste2="">-->
-                        <input type="text" id="nome" class="form-control" required data-parsley-required-message="Por favor digite o nome" data-parsley-trigger="focusout" data-parsley-remote data-parsley-remote-validator="teste">
+                        <input type="text" id="nome" class="form-control" required data-parsley-required-message="Por favor digite o nome" data-parsley-trigger="focusout" data-parsley-teste2="">
+                        <!--<input type="text" id="nome" class="form-control" required data-parsley-required-message="Por favor digite o nome" data-parsley-trigger="focusout" data-parsley-remote data-parsley-remote-validator="teste">-->
                     </div>
 
                     <div class="form-group col-sm-6">
@@ -99,12 +103,30 @@
             </div>
 
             <div class="panel-footer">
-                <button type="reset" class="btn btn-danger">Cancelar</button>
+                <button type="button" class="btn btn-danger" onclick="cancelar();">Cancelar</button>
                 <button type="submit" class="btn btn-primary pull-right">Salvar</button>
             </div>
 
         </form>
 
+    </div>
+    
+    <div id="formModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <p>One fine body&hellip;</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="showNotify();">Save changes</button>
+                </div>
+            </div>
+        </div>
     </div>
     
     <style>
@@ -126,9 +148,85 @@
         });
 
         function teste() {
-            alert('FOI');
+            $('#formModal').modal('show');
         }
         
+        function showNotify() {
+         
+            $('#formModal').modal('hide')
+            
+            createNotify('info', 'Funcionando SHOW!!!');
+            
+        }
+        
+        function createNotify(tipo, mensagem) {
+            new PNotify({
+                title: 'Bootstrap Icon',
+                text: mensagem,
+                type: tipo,
+                styling: 'bootstrap3',
+                delay: 3000,
+                buttons: {
+                    closer: false,
+                    sticker: false
+                }
+            });
+        }
+        
+        function createConfirm(mensagem, yesFunc, noFunc) {
+//            (new PNotify({
+//                styling: 'bootstrap3',
+//                type: 'info',
+//                title: 'Confirmation Needed',
+//                text: mensagem,
+//                icon: 'glyphicon glyphicon-question-sign',
+//                hide: false,
+//                confirm: {
+//                    confirm: true
+//                },
+//                buttons: {
+//                    closer: false,
+//                    sticker: false
+//                },
+//                history: {
+//                    history: false
+//                },
+//                addclass: 'stack-modal',
+//                stack: {'dir1': 'down', 'dir2': 'right', 'modal': true}
+//            })).get().on('pnotify.confirm', yesFunc).on('pnotify.cancel', noFunc);
+            
+            
+            $.confirm({
+                text: mensagem,
+                confirmButton: "Sim",
+                cancelButton: "Cancelar",
+                cancelButtonClass: "btn-danger",
+                dialogClass: "modal-dialog modal-md",
+                post: true,
+                confirm: yesFunc,
+                cancel: noFunc
+            });            
+        }
+        
+        function cancelar() {
+            
+            var yesFunc = function () {
+                
+                $('#formDados').trigger('reset');
+                
+                $('#formDados').parsley().reset();
+
+                $('#nome').focus();
+
+            }
+            
+            var noFunc = function() {
+                $('#nome').focus();
+            }
+
+            createConfirm('Tem certeza?', yesFunc, noFunc);
+            
+        }
         
         window.Parsley.addAsyncValidator('teste', function() {
 
