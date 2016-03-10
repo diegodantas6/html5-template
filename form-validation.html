@@ -54,7 +54,7 @@
 
                     <div class="form-group col-sm-6">
                         <label>Tipo</label>
-                        <select class="form-control" required placeholder="Selecione um tipo" data-parsley-trigger="focusout">
+                        <select class="form-control" required data-parsley-trigger="focusout">
                             <option value="" selected>Select your option</option>
                             <option>Alaska</option>
                             <option>California</option>
@@ -71,7 +71,7 @@
                 
                     <div class="form-group col-sm-6">
                         <label>Tipo</label>
-                        <select class="form-control" required placeholder="Selecione um tipo" data-parsley-errors-container="#errorTipo2" data-parsley-trigger="focusout">
+                        <select class="form-control" required data-parsley-trigger="focusout">
                             <option value="" selected>Select your option</option>
                             <option>Alaska</option>
                             <option>California</option>
@@ -81,7 +81,6 @@
                             <option>Washington</option>
                         </select>
 
-                        <span id="errorTipo2"></span>
                     </div>
 
 
@@ -132,8 +131,16 @@
     
     <style>
     
+/*
+        input, select {
+            border-radius: 0 !important;
+            -webkit-appearance: none;
+        }
+*/
+        
         textarea {
             resize: none;
+/*            border-radius: 0px;*/
         }
         
     </style>
