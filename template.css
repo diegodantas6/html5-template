@@ -1,0 +1,7 @@
+textarea {
+    resize: none;
+}
+
+.jconfirm-box-container .content {
+	min-height: auto;
+}
