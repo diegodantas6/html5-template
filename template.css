@@ -5,3 +5,7 @@ textarea {
 .jconfirm-box-container .content {
 	min-height: auto;
 }
+
+select {
+    -webkit-appearance: none;
+}
